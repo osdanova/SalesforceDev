@@ -26,16 +26,15 @@ public class PKM_PokeAPI_Test
     @isTest
     public static void test_upsertPokemonSpeciesAdvanced()
     {
-        PKM_Type__c type4 = new PKM_Type__c(Id_PKM__c = 4);
-        PKM_Type__c type12 = new PKM_Type__c(Id_PKM__c = 12);
-        insert new List<PKM_Type__c> { type4, type12 };
-
-        PKM_Ability__c ability34 = new PKM_Ability__c(Id_PKM__c = 34);
-        PKM_Ability__c ability65 = new PKM_Ability__c(Id_PKM__c = 65);
-        insert new List<PKM_Ability__c> { ability34, ability65 };
+        Map<String,String> map_endpoint_filename = new Map<String,String>();
+        map_endpoint_filename.put(PKM_PokeAPI.BASE_URL + 'type/4', 'Test_PKMType4');
+        map_endpoint_filename.put(PKM_PokeAPI.BASE_URL + 'type/12', 'Test_PKMType12');
+        map_endpoint_filename.put(PKM_PokeAPI.BASE_URL + 'ability/34', 'Test_PKMAbility34');
+        map_endpoint_filename.put(PKM_PokeAPI.BASE_URL + 'ability/65', 'Test_PKMAbility65');
+        map_endpoint_filename.put(PKM_PokeAPI.BASE_URL + 'pokemon/1', 'Test_PKMSpecies1');
         
         Test.startTest();
-        Test.setMock(HttpCalloutMock.class, Util_CalloutMock.getResourceMock('Test_PKMSpecies1'));
+        Test.setMock(HttpCalloutMock.class, Util_CalloutMock.getMultiResourceMock(map_endpoint_filename));
         PKM_PokeAPI.upsertPokemonSpeciesAdvanced(1);
         Test.stopTest();
 
