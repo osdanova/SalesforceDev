@@ -1,5 +1,7 @@
+@isTest
 public class Util_CalloutMock
 {
+    
     public static StaticResourceCalloutMock getResourceMock (string filename, integer status, Map<String,String> map_headers)
     {
         StaticResourceCalloutMock mock = new StaticResourceCalloutMock();
@@ -15,7 +17,7 @@ public class Util_CalloutMock
     {
         return(getResourceMock (filename, 200, new Map<String,String> {'Content-Type' => 'application/json'}));
     }
-
+    
     public static MultiStaticResourceCalloutMock getMultiResourceMock (Map<string,string> map_endpoint_filename, integer status, Map<String,String> map_headers)
     {
         MultiStaticResourceCalloutMock mock = new MultiStaticResourceCalloutMock();
