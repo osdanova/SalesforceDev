@@ -22,6 +22,9 @@ public class PKM_PokeAPI
     public static string fetchAbility(integer identifier) {
         return fetchData('ability', identifier);
     }
+    public static string fetchSpecies(integer identifier) {
+        return fetchData('pokemon-species', identifier);
+    }
     
     public static PKM_PokemonWrapper getPokemonWrapper(integer identifier) {
         return PKM_PokemonWrapper.fromJson(fetchPokemon(identifier));
@@ -42,6 +45,10 @@ public class PKM_PokeAPI
     public static PKM_Ability__c getAbility(integer identifier) {
         return getAbilityWrapper(identifier).toAbility();
     }
+    public static string getDescription(integer identifier) {
+        string description = PKM_SpeciesWrapper.fromJson(fetchSpecies(identifier)).description;
+        return replaceNextLine(description);
+    }
 
     public static void upsertType(integer identifier){
         upsert getType(identifier) Id_PKM__c;
@@ -54,6 +61,7 @@ public class PKM_PokeAPI
     {
         // Fetch the pokemon
         PKM_Species__c species = getPokemon(identifier);
+        species.Description__c = getDescription(identifier);
 
         // Check if the types and abilities are in database, otherwise fetch them
         Set<integer> set_typeIds = new Set<integer>{
@@ -130,6 +138,11 @@ public class PKM_PokeAPI
         pokemonJson = pokemonJson.replace('"id"','"Id_PKM"');
         pokemonJson = pokemonJson.replace('"official-artwork"','"officialArtwork"');
         return pokemonJson;
+    }
+    
+    public static string replaceNextLine(string pokeApiText)
+    {
+        return pokeApiText.replace('','\r\n');
     }
 
     public static integer getIdFromUrl(String url)

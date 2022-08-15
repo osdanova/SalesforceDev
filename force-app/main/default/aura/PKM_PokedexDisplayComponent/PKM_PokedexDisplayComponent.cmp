@@ -1,0 +1,39 @@
+<aura:component controller="PKM_PokedexApexController">
+    <!-- Attributes -->
+    <aura:attribute name="pokemonId" type="integer"/>
+    <aura:attribute name="pokemon" type="Map"/>
+    
+    <!-- Handlers -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:handler name="change" value="{!v.pokemonId}" action="{!c.pokemonIdChanged}"/>
+    
+    <!-- Content -->
+	<div class = "componentStructure">
+        
+        <div class="Image" style="grid-area: image">
+            <img src="{!v.pokemon.artworkUrl}" alt="Pokemon Artwork" style="max-width:100%; max-height:100%;"/>
+        </div>
+        
+        <div class="Data" style="width:auto; height: auto; grid-area: data">
+            <div style="height: 100px; background-color:LightCoral; border-radius: 25px;">
+                <img src="{!v.pokemon.spriteUrl}" alt="Pokemon Sprite" style="float:left"/>
+                <div style="height: 100%; display: grid; align-items: center">
+                    <p style="font-size: 30px;">{!v.pokemon.id}: {!v.pokemon.name}</p>
+                </div>
+                <div style="clear: both"/>
+            </div>
+            <div style="padding: 30px; font-size: 20px">
+                <p>Type 1: {!v.pokemon.type1} | Type 2: {!v.pokemon.type2}</p>
+                <p>Ability 1: {!v.pokemon.ability1}</p>
+                <p>Ability 2: {!v.pokemon.ability2}</p>
+                <p>Hidden Ability: {!v.pokemon.ability3}</p>
+            </div>
+        </div>
+        
+        <div class="Description" style="width:auto; height: auto;grid-area: desc; font-size: 20px; background-color:LightGray; border-radius: 25px; padding: 50px">
+            <p>DESCRIPTION:</p>
+            <p>{!v.pokemon.description}</p>
+        </div>
+        
+    </div>
+</aura:component>

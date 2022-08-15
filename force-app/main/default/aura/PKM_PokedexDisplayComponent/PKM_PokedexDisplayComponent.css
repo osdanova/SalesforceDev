@@ -1,0 +1,10 @@
+.THIS.componentStructure
+{
+    display: grid; 
+    Height: 100%; Width: 100%;
+    grid-template-columns: 1fr 1fr; 
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas: 
+    "image data"
+    "desc desc";
+}

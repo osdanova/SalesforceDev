@@ -1,0 +1,14 @@
+<apex:page showHeader="false">
+    <apex:includeLightning />
+    
+    <div style="height:100vh" id="pokedexComponent" />
+
+    <script>
+        $Lightning.use("c:PKM_PokedexApp", function() {
+            $Lightning.createComponent("c:PKM_PokedexComponent", // Component to load
+                                       {}, // Parameters
+                                       "pokedexComponent", // Div where the component is loaded
+                                       function(cmp) { console.log("Pokedex loaded"); }); // Execute once the component is loaded
+        });
+    </script>
+</apex:page>
