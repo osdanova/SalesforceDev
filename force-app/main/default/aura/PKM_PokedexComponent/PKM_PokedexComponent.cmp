@@ -1,0 +1,37 @@
+<aura:component controller="PKM_PokedexApexController">
+    <!-- Attributes -->
+    <aura:attribute name="selectedPokemonId" type="integer" default="1"/>
+    <aura:attribute name="pokemonList" type="List"/>
+    
+    <!-- Handlers -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <!-- Content -->
+    <header style="width:100%; height: 10%; background-color:LightCoral">
+        <img src="{!$Resource.PKM_PokeballIcon}" alt="Pokeball icon" style="float: left; width:auto; height: 100%; max-height: 100px"/>
+        <h2 style="float: right; margin:20px">Powered by: <a href="www.pokeapi.co">PokeApi.co</a></h2>
+        <div style="height: 100%; display: grid; align-items: center">
+            <p style="font-size: 30px; font-weight: bold">Pokédex</p>
+        </div>
+        <div style="clear: both"/>
+    </header>
+    
+    <div style="height:90%; overflow: hidden; display: grid; grid-template-columns: 1fr 1fr; background-color:AliceBlue">
+        <div style="padding: 30px">
+            <c:PKM_PokedexDisplayComponent pokemonId="{!v.selectedPokemonId}"/>
+        </div>
+        <div style="background-color:Azure; padding: 30px; height: 100%; overflow-y: scroll">
+            <aura:iteration items="{!v.pokemonList}" var="pokemon">
+                <div style="height: 100px; background-color:LightCoral; border-radius: 25px; cursor: pointer;" 
+                     onclick="{!c.pokemonSelected}" data-pokemonid="{!pokemon.Id_PKM__c}">
+                    <img src="{!pokemon.SpriteURL__c}" alt="Pokemon Sprite" style="float:left"/>
+                    <div style="height: 100%; display: grid; align-items: center">
+                        <p style="font-size: 30px;">{!pokemon.Id_PKM__c}: {!pokemon.Name}</p>
+                    </div>
+                    <div style="clear: both"/>
+                </div>
+                <div style = "height: 10px"></div>
+            </aura:iteration>
+        </div>
+    </div>
+</aura:component>
