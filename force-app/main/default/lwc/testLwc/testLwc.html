@@ -1,0 +1,29 @@
+<template>
+    <div style="background-color: white;">
+
+        <p>This is a testing LWC</p>
+        <p>Record ID: {recordId}</p>
+        <div style="background-color: lightsalmon;">
+            <div style="background-color: greenyellow; margin: 5px; padding: 5px;
+                        border-style: solid; border-color: black; border-width: 1px; border-radius: 25px;">
+                <p style="background-color: lightblue;">This is a standard HTML div</p>
+            </div>
+        </div>
+
+        <lightning-button 
+          variant="neutral"
+          label="Console log accounts (Apex)" 
+          onclick={apexCall} 
+        ></lightning-button>
+
+        <lightning-button 
+          variant="neutral"
+          label="Console log accounts (Apex - params)" 
+          onclick={apexCallWithParams} 
+        ></lightning-button>
+        <div style="background-color: red; padding: 5px;">
+            <p>This is an inner LWC</p>
+            <c-test-lwc-decorators counter=5></c-test-lwc-decorators>
+        </div>
+    </div>
+</template>

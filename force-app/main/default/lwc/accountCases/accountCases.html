@@ -1,0 +1,10 @@
+<template>
+    <div style="height: 300px;">
+        <lightning-datatable
+                key-field="id"
+                data={cases}
+                columns={columns}>
+        </lightning-datatable>
+    </div>
+    <button onclick={printCases}>Print Cases</button>
+</template>
