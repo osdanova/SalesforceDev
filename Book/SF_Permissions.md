@@ -18,6 +18,10 @@ Using SOQL the assignments to Permission Sets and groups can be checked via Perm
 
     SELECT Id, Assignee.name, PermissionSet.name, PermissionSetGroup.DeveloperName from PermissionSetAssignment
 
+To check which permission sets a PS Group has:
+
+    SELECT id, PermissionSet.name from PermissionSetGroupComponent where PermissionSetGroupId = myGroup
+
 NOTES:
 * If a permission set is granted by a group it won't be shown in the SOQL query, the group will be shown instead.
 * If a PS is assigned to a user group, it'll be linked to the group, not to each user in the SOQL query.
