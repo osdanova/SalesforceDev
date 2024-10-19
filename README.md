@@ -5,6 +5,8 @@ The code repository for my developer org.
 
 * [Lightning Web Components](./Book/SF_LWC.md)
 * [Apex Async](./Book/SF_ApexAsync.md)
+* [Emails](./Book/SF_Emails.md)
+* [Permissions](./Book/SF_Permissions.md)
 
 ## Projects
 
